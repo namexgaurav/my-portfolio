@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  AppColors._();
+
+  static const Color accent = Color(0xFF3B82F6);
+
+  static const Color darkBackground = Color(0xFF09090B);
+  static const Color darkSurface = Color(0xFF111113);
+  static const Color darkCard = Color(0xFF18181B);
+  static const Color darkBorder = Color(0xFF27272A);
+  static const Color darkText = Color(0xFFFAFAFA);
+  static const Color darkMutedText = Color(0xFFA1A1AA);
+
+  static const Color lightBackground = Color(0xFFFAFAFA);
+  static const Color lightSurface = Color(0xFFFFFFFF);
+  static const Color lightCard = Color(0xFFFFFFFF);
+  static const Color lightBorder = Color(0xFFE5E7EB);
+  static const Color lightText = Color(0xFF111827);
+  static const Color lightMutedText = Color(0xFF6B7280);
+}
