@@ -8,7 +8,12 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSize.sectionPaddingLg * 4, vertical: AppSize.sectionPaddingLg),
+      padding: const EdgeInsets.only(
+        left: AppSize.sectionPaddingLg * 4,
+        right: AppSize.sectionPaddingLg * 4,
+        top: AppSize.sectionPaddingLg,
+        bottom: AppSize.xl,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -18,25 +23,31 @@ class AboutSection extends StatelessWidget {
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
-                      border: Border.all(color: Theme.of(context).colorScheme.outline),
-              borderRadius: BorderRadius.circular(AppSize.borderRadiusLg),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
+                  borderRadius: BorderRadius.circular(AppSize.borderRadiusLg),
                 ),
               ),
-              const SizedBox(width: AppSize.md,),
+              const SizedBox(width: AppSize.md),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Gaurav Sharma", style: Theme.of(context).textTheme.titleLarge,),
-                  const SizedBox(height: AppSize.mini,),
+                  Text(
+                    "Gaurav Sharma",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: AppSize.mini),
                   const _AvailableText(),
-
                 ],
               ),
-
             ],
           ),
-          const SizedBox(height: AppSize.md,),
-          Text('''I'm a Flutter Developer with internship and freelance experience, passionate about building smooth, scalable, and user-friendly mobile applications.\n\nI spend most of my time developing apps, exploring AI tools, and learning new technologies. What excites me most is transforming ideas into products that people can use every day.\n\nCurrently, I'm focused on improving my skills in Flutter, mobile architecture, and modern development practices while building projects that challenge me to grow as an engineer.''', style: Theme.of(context).textTheme.titleMedium,)
+          const SizedBox(height: AppSize.md),
+          Text(
+            '''I'm a Flutter Developer with internship and freelance experience, passionate about building smooth, scalable, and user-friendly mobile applications.\n\nI spend most of my time developing apps, exploring AI tools, and learning new technologies. What excites me most is transforming ideas into products that people can use every day.\n\nCurrently, I'm focused on improving my skills in Flutter, mobile architecture, and modern development practices while building projects that challenge me to grow as an engineer.''',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
         ],
       ),
     );
@@ -50,23 +61,33 @@ class _AvailableText extends StatefulWidget {
   State<_AvailableText> createState() => _AvailableTextState();
 }
 
-class _AvailableTextState extends State<_AvailableText>  with SingleTickerProviderStateMixin{
-late AnimationController _animationController;
-late Animation<double> _scaleAnimation;
-late Animation<double> _fadeAnimation;
+class _AvailableTextState extends State<_AvailableText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _fadeAnimation;
 
-@override
+  @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 800))..repeat(reverse: true);
-    _scaleAnimation = Tween<double>(begin: 1, end: 1.6).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
-    _fadeAnimation = Tween<double>(begin: 0.6, end: 0.0).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    )..repeat(reverse: true);
+    _scaleAnimation = Tween<double>(begin: 1, end: 1.6).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+    _fadeAnimation = Tween<double>(begin: 0.6, end: 0.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
   }
+
   @override
   void dispose() {
     _animationController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -79,26 +100,42 @@ late Animation<double> _fadeAnimation;
             child: Stack(
               children: [
                 AnimatedBuilder(
-                  animation: _animationController, builder: (BuildContext context, Widget? child) {  
+                  animation: _animationController,
+                  builder: (BuildContext context, Widget? child) {
                     return FadeTransition(
                       opacity: _fadeAnimation,
-                      child: ScaleTransition(scale: _scaleAnimation,child: child,));
+                      child: ScaleTransition(
+                        scale: _scaleAnimation,
+                        child: child,
+                      ),
+                    );
                   },
-                  child: Container(width: AppSize.sm, height: AppSize.sm, decoration: BoxDecoration(
-                    color: AppColors.primary,
-                    shape: BoxShape.circle
-                  ),),
+                  child: Container(
+                    width: AppSize.sm,
+                    height: AppSize.sm,
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
                 ),
-                Container(width: AppSize.sm, height: AppSize.sm, decoration: BoxDecoration(
+                Container(
+                  width: AppSize.sm,
+                  height: AppSize.sm,
+                  decoration: BoxDecoration(
                     color: AppColors.primary,
-                    shape: BoxShape.circle
-                  ),),
+                    shape: BoxShape.circle,
+                  ),
+                ),
               ],
             ),
           ),
         ),
-        const SizedBox(width: AppSize.mini,),
-        Text("Available for work", style: Theme.of(context).textTheme.bodyMedium,),
+        const SizedBox(width: AppSize.mini),
+        Text(
+          "Available for work",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
       ],
     );
   }

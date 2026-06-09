@@ -30,7 +30,7 @@ class CustomTextTheme {
       fontSize: 16,
       fontWeight: FontWeight.w400,
       height: 1.6,
-      color: AppColors.lightText,
+      color: AppColors.lightMutedText,
     ),
     bodyMedium: const TextStyle(
       fontSize: 14,
@@ -72,7 +72,7 @@ class CustomTextTheme {
       fontSize: 16,
       fontWeight: FontWeight.w400,
       height: 1.6,
-      color: AppColors.darkText,
+      color: AppColors.darkMutedText,
     ),
     bodyMedium: const TextStyle(
       fontSize: 14,

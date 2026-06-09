@@ -18,10 +18,10 @@ class CustomNavbar extends StatelessWidget {
       "Contact us",
     ];
     return Padding(
-      padding:const EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.only(top: 16),
       child: ClipRRect(
-              clipBehavior: Clip.hardEdge,
-              borderRadius: BorderRadius.circular(99),
+        clipBehavior: Clip.hardEdge,
+        borderRadius: BorderRadius.circular(99),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
           child: Container(
@@ -38,11 +38,21 @@ class CustomNavbar extends StatelessWidget {
                   width: 35,
                   height: 35,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Theme.of(context).colorScheme.outline),
-            color: Theme.of(context).colorScheme.surfaceContainerHighest, 
-            shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline,
+                    ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
+                    shape: BoxShape.circle,
                   ),
-                  child: Center(child: Icon(LucideIcons.user, color: Theme.of(context).colorScheme.onSurfaceVariant, size: 16.0,),),
+                  child: Center(
+                    child: Icon(
+                      LucideIcons.user,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      size: 16.0,
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 8.0),
                 ...List.generate(navbarItems.length, (index) {
@@ -82,7 +92,9 @@ class __NavbarMenuItemsState extends State<_NavbarMenuItems> {
         onTap: () {},
         child: Text(
           widget.text,
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: _isHover ? Theme.of(context).colorScheme.onSurface : null),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            color: _isHover ? Theme.of(context).colorScheme.onSurface : null,
+          ),
         ),
       ),
     );

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/common/widgets/custom_navbar_widget.dart';
 import 'package:my_portfolio/features/about_section.dart';
 import 'package:my_portfolio/features/contact_us_section.dart';
-import 'package:my_portfolio/features/experience_section.dart';
+import 'package:my_portfolio/features/experience/experience_section.dart';
 import 'package:my_portfolio/features/feedback_section.dart';
 import 'package:my_portfolio/features/project_section.dart';
 import 'package:my_portfolio/features/resources_section.dart';
@@ -18,22 +18,19 @@ class MainApp extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Column(
-              children: const[
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
                 AboutSection(),
                 ExperienceSection(),
                 TechStackSection(),
                 ProjectSection(),
                 FeedbackSection(),
                 ResourcesSection(),
-                ContactUsSection()
-                
+                ContactUsSection(),
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: const CustomNavbar(),
-          ),
+          Align(alignment: Alignment.topCenter, child: const CustomNavbar()),
         ],
       ),
     );
