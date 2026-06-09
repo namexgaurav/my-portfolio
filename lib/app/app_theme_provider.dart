@@ -11,7 +11,7 @@ class AppThemeProvider extends ChangeNotifier {
     if (_theme == theme) return;
     _theme = theme;
     notifyListeners();
-  }
+     }
 
   void toggleTheme() {
     if (_theme == ThemeMode.light) {

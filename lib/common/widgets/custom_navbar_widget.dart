@@ -1,55 +1,61 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:my_portfolio/app/app_theme_provider.dart';
-import 'package:my_portfolio/common/widgets/custom_circle_button.dart';
-import 'package:my_portfolio/core/constants/app_colors.dart';
-import 'package:provider/provider.dart';
+import 'package:my_portfolio/common/widgets/custom_theme_circle_button_widget.dart';
 
 class CustomNavbar extends StatelessWidget {
   const CustomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final themeToggel = Provider.of<AppThemeProvider>(context);
     final List<String> navbarItems = [
       "About",
       "Experience",
+      "Stack",
       "Projects",
+      "Feedback",
+      "Resources",
       "Contact us",
     ];
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        margin: const EdgeInsets.only(top: 16),
-        decoration: BoxDecoration(
-          color: Colors.transparent,
-          border: Border.all(color: Theme.of(context).colorScheme.outline),
-          borderRadius: BorderRadius.circular(99),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomCircleButton(
-              onTap: () {},
-              icon: LucideIcons.code,
-              color: AppColors.primary,
+    return Padding(
+      padding:const EdgeInsets.only(top: 16),
+      child: ClipRRect(
+              clipBehavior: Clip.hardEdge,
+              borderRadius: BorderRadius.circular(99),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              border: Border.all(color: Theme.of(context).colorScheme.outline),
+              borderRadius: BorderRadius.circular(99),
             ),
-            const SizedBox(width: 8.0),
-            ...List.generate(navbarItems.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: _NavbarMenuItems(text: navbarItems[index]),
-              );
-            }),
-            CustomCircleButton(
-              onTap: () => themeToggel.toggleTheme(),
-              icon: themeToggel.isDarkMode ? LucideIcons.sun : LucideIcons.moon,
-              color: AppColors.primary,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: 35,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Theme.of(context).colorScheme.outline),
+            color: Theme.of(context).colorScheme.surfaceContainerHighest, 
+            shape: BoxShape.circle,
+                  ),
+                  child: Center(child: Icon(LucideIcons.user, color: Theme.of(context).colorScheme.onSurfaceVariant, size: 16.0,),),
+                ),
+                const SizedBox(width: 8.0),
+                ...List.generate(navbarItems.length, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: _NavbarMenuItems(text: navbarItems[index]),
+                  );
+                }),
+                const SizedBox(width: 2.0),
+                const CustomThemeCircleButton(),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -74,18 +80,9 @@ class __NavbarMenuItemsState extends State<_NavbarMenuItems> {
       onExit: (_) => setState(() => _isHover = false),
       child: GestureDetector(
         onTap: () {},
-        child: AnimatedDefaultTextStyle(
-          style: TextStyle(
-            color: _isHover
-                ? AppColors.primary
-                : Theme.of(context).colorScheme.onSurfaceVariant,
-          ),
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          child: Text(
-            widget.text,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-          ),
+        child: Text(
+          widget.text,
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: _isHover ? Theme.of(context).colorScheme.onSurface : null),
         ),
       ),
     );
