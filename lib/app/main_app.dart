@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/common/widgets/custom_navbar_widget.dart';
 import 'package:my_portfolio/features/about_section.dart';
-import 'package:my_portfolio/features/contact_us_section.dart';
+import 'package:my_portfolio/features/contact_us/contact_us_section.dart';
 import 'package:my_portfolio/features/experience/experience_section.dart';
-import 'package:my_portfolio/features/feedback_section.dart';
-import 'package:my_portfolio/features/project_section.dart';
-import 'package:my_portfolio/features/resources_section.dart';
-import 'package:my_portfolio/features/tech_stack_section.dart';
+import 'package:my_portfolio/features/feedback/feedback_section.dart';
+import 'package:my_portfolio/features/projects/project_section.dart';
+import 'package:my_portfolio/features/resources/resources_section.dart';
+import 'package:my_portfolio/features/tech_stack/tech_stack_section.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

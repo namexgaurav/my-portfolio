@@ -4,12 +4,11 @@ import 'package:my_portfolio/app/app_theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class CustomThemeCircleButton extends StatefulWidget {
-  const CustomThemeCircleButton({
-    super.key,
-  });
+  const CustomThemeCircleButton({super.key});
 
   @override
-  State<CustomThemeCircleButton> createState() => _CustomThemeCircleButtonState();
+  State<CustomThemeCircleButton> createState() =>
+      _CustomThemeCircleButtonState();
 }
 
 class _CustomThemeCircleButtonState extends State<CustomThemeCircleButton> {
@@ -25,19 +24,30 @@ class _CustomThemeCircleButtonState extends State<CustomThemeCircleButton> {
       child: GestureDetector(
         onTap: () => themeToggel.toggleTheme(),
         child: Container(
-                  width: 35,
-                  height: 35,
-                  decoration: BoxDecoration(
-        border: Border.all(color: Theme.of(context).colorScheme.outline),
-        color: Theme.of(context).colorScheme.surfaceContainerHighest, 
-        shape: BoxShape.circle,
-                  ),
-                  child: TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0, end: _isHover ?  0.1 : 0),
-                    duration: const Duration(milliseconds: 300),
-                    builder: (context, value, child) => AnimatedRotation(turns: value, duration: const Duration(milliseconds: 300), child: child,),
-                    child: Center(child: Icon(isDarkMode ? LucideIcons.sun : LucideIcons.moon300, color: Theme.of(context).colorScheme.onSurfaceVariant, size: 16.0)))
-                ),
+          width: 35,
+          height: 35,
+          decoration: BoxDecoration(
+            border: Border.all(color: Theme.of(context).colorScheme.outline),
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
+            shape: BoxShape.circle,
+          ),
+          child: TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0, end: _isHover ? 0.1 : 0),
+            duration: const Duration(milliseconds: 300),
+            builder: (context, value, child) => AnimatedRotation(
+              turns: value,
+              duration: const Duration(milliseconds: 300),
+              child: child,
+            ),
+            child: Center(
+              child: Icon(
+                isDarkMode ? LucideIcons.sun : LucideIcons.moon300,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                size: 16.0,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -5,10 +5,12 @@ import 'package:my_portfolio/core/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider<AppThemeProvider>(
-    create: (BuildContext context) => AppThemeProvider(),
-    child: const MyApp(),
-  ));
+  runApp(
+    ChangeNotifierProvider<AppThemeProvider>(
+      create: (BuildContext context) => AppThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Gaurav Sharma - Portfolio',
       debugShowCheckedModeBanner: false,
       themeMode: theme,
-      theme: AppTheme.light,  
+      theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       home: const MainApp(),
     );

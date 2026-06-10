@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:my_portfolio/common/widgets/custom_heading_widget.dart';
+import 'package:my_portfolio/common/widgets/custom_tech_stack_container_widget.dart';
 import 'package:my_portfolio/core/constants/app_size.dart';
 import 'package:my_portfolio/features/experience/model/experience_model.dart';
 
@@ -12,7 +13,7 @@ class ExperienceSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSize.sectionPaddingLg * 4,
-        vertical: AppSize.xxl,
+        vertical: AppSize.lg,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -181,7 +182,7 @@ class _ExperienceBoxState extends State<_ExperienceBox> {
                 spacing: AppSize.sm,
                 runSpacing: AppSize.sm,
                 children: List.generate(widget.techStack.length, (index) {
-                  return _TechStackContainer(label: widget.techStack[index]);
+                  return TechStackContainer(label: widget.techStack[index]);
                 }),
               ),
               const SizedBox(height: AppSize.lg),
@@ -220,46 +221,6 @@ class _ExperienceBoxState extends State<_ExperienceBox> {
               }),
             ],
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class _TechStackContainer extends StatefulWidget {
-  const _TechStackContainer({required this.label});
-
-  final String label;
-
-  @override
-  State<_TechStackContainer> createState() => _TechStackContainerState();
-}
-
-class _TechStackContainerState extends State<_TechStackContainer> {
-  bool _isHovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: AnimatedScale(
-        scale: _isHovered ? 1.05 : 1.0,
-        duration: const Duration(milliseconds: 300),
-        child: Container(
-          padding: const EdgeInsets.all(AppSize.sm),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSize.sm),
-            color: Theme.of(
-              context,
-            ).colorScheme.onSurfaceVariant.withValues(alpha: 0.07),
-          ),
-          child: Text(
-            widget.label,
-            style: Theme.of(
-              context,
-            ).textTheme.bodyMedium!.copyWith(fontSize: AppSize.fontXs),
-          ),
         ),
       ),
     );
